@@ -1,0 +1,282 @@
+/* General Body and Container Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f8f8; /* Light background for the page */
+    margin: 0;
+    padding: 0;
+    /* --- IMPORTANT: Re-added padding-top for fixed navbar --- */
+    padding-top: 70px; /* This must match your navbar's height */
+    /* ----------------------------------------------------- */
+
+    display: flex;
+    justify-content: center; /* Centers the .formpage horizontally */
+    align-items: flex-start; /* Aligns the .formpage to the top of the viewport */
+    min-height: 100vh; /* Ensure it takes full viewport height */
+}
+
+.formpage {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px; /* Max width for the form container */
+    margin: 20px; /* Adjusted margin since body has padding-top */
+    box-sizing: border-box; /* Include padding in width */
+
+    /* The flex properties for .formpage itself (display, flex-direction, justify-content, align-items)
+       are expected to come from your global.css, making the form content a centered column.
+       This CSS enhances its appearance (background, shadow, padding, etc.). */
+}
+
+/* Titles */
+.title {
+    color: #333;
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+/* Input and Textarea Styling (overrides global.css for more detail) */
+input[type="text"],
+input[type="number"],
+input[type="file"],
+textarea {
+    width: calc(100% - 24px); /* Full width minus padding */
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    color: #555;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; /* Include padding in width */
+    /* The basic 'margin: 5px;' from global.css is overridden by 'margin-bottom: 20px;' here */
+}
+
+input[type="file"] {
+    padding: 10px; /* Slightly less padding for file input */
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    border-color: #007bff; /* Highlight on focus */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 100px;
+}
+
+/* Labels */
+label {
+    display: block; /* Make labels take their own line */
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #444;
+    font-size: 0.95em;
+}
+
+/* Button Styling (overrides global.css for more detail) */
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border: none; /* Override global.css border */
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px; /* Spacing above buttons */
+    /* Adjusting margins to override global.css and allow proper centering/alignment */
+    margin-left: auto;
+    margin-right: auto;
+    display: block; /* Ensures auto margins work for centering */
+    width: auto; /* Allows button to size to its content */
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    color: white; /* Ensure text color remains white on hover, overriding global.css */
+}
+
+button:active {
+    background-color: #004085;
+    transform: translateY(0);
+}
+
+/* Exercise Section Specific Styling */
+.formpage > div[style] { /* Targeting the div with inline style for exercise inputs */
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to next line */
+    gap: 20px; /* Space between inputs */
+    margin-bottom: 30px;
+    justify-content: space-between; /* Distribute items */
+    align-items: flex-end; /* Align items to the bottom if they have different heights */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    width: calc(100% - 40px); /* Adjust width for its own padding */
+    box-sizing: border-box;
+}
+
+.formpage > div[style] .title {
+    width: 100%; /* Title takes full width */
+    text-align: left;
+    margin-bottom: 20px;
+    border-bottom: none;
+    padding-bottom: 0;
+    font-size: 1.6em;
+    color: #555;
+}
+
+.formpage > div[style] input,
+.formpage > div[style] textarea,
+.formpage > div[style] label {
+    flex: 1 1 calc(50% - 10px); /* Two columns, considering gap */
+    min-width: 200px; /* Minimum width before wrapping */
+}
+
+.formpage > div[style] textarea {
+    flex-basis: calc(100% - 20px); /* Textarea takes full width */
+}
+
+.formpage > div[style] button {
+    flex: 1 1 auto; /* Button can grow/shrink */
+    max-width: 200px; /* Limit button width */
+    margin: 0 auto; /* Center button in its flex item */
+}
+
+
+/* Exercises List Container */
+.exercises {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+    width: 100%; /* Ensure it takes full width within the .formpage column */
+    box-sizing: border-box;
+}
+
+/* Individual Exercise Item */
+.exercise {
+    display: flex;
+    flex-direction: column; /* Stack content vertically within each exercise */
+    align-items: flex-start; /* Align text to the left */
+    gap: 10px; /* Space between elements within an exercise card */
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f1f7fe; /* Light blue background for exercise cards */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    position: relative; /* For positioning delete button */
+}
+
+.exercise h2 {
+    color: #0056b3; /* Darker blue for exercise name */
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+
+.exercise p {
+    color: #666;
+    font-size: 0.95em;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.exercise img {
+    max-width: 150px; /* Max width for exercise images */
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover; /* Cover the area without distortion */
+    margin-top: 10px;
+    border: 1px solid #eee;
+}
+
+.exercise button {
+    background-color: #dc3545; /* Red for delete button */
+    padding: 8px 15px;
+    font-size: 0.9em;
+    margin-top: 15px;
+    align-self: flex-end; /* Align delete button to the right */
+    margin-right: 0; /* Override auto margins from general button rule */
+    margin-left: 0; /* Override auto margins from general button rule */
+}
+
+.exercise button:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        /* Adjusted padding-top for fixed navbar on smaller screens */
+        padding-top: 60px; /* Assuming navbar height might reduce slightly on mobile */
+    }
+    .formpage {
+        padding: 25px;
+        margin: 20px; /* Adjusted margins */
+    }
+
+    .title {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    textarea,
+    button {
+        font-size: 0.95em;
+        padding: 10px;
+    }
+
+    .formpage > div[style] {
+        flex-direction: column; /* Stack exercise inputs vertically on smaller screens */
+        align-items: stretch;
+        padding: 15px;
+    }
+
+    .formpage > div[style] input,
+    .formpage > div[style] textarea,
+    .formpage > div[style] label,
+    .formpage > div[style] button {
+        flex: none; /* Disable flex growth */
+        width: 100%; /* Take full width */
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        /* Further adjusted padding-top for very small screens if needed */
+        padding-top: 50px;
+    }
+    .formpage {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .title {
+        font-size: 1.5em;
+    }
+
+    .exercise {
+        padding: 15px;
+    }
+
+    .exercise h2 {
+        font-size: 1.3em;
+    }
+}
